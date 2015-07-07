@@ -1,0 +1,86 @@
+#+TITLE: lazytests README
+
+* Lazytests: lazy tests for lazy engineers
+
+* Why?
+
+Because it's more convenient than writing a lot of repetitive test boilerplate.
+
+(I'm sure there are lots of other libraries out there which do something much like, if not exactly like, this one does. If I could've found one of them via npmjs.org's search capabilities, I'd have used it instead. No doubt this one will be equally hard to find, but /I/ know where it is, and that's enough for me.)
+
+* How?
+
+** Short version
+
+: cases = require('lazytests');
+: cases(it, testCases, testFunction);
+
+** Long version
+
+The module exports a function. This function takes three arguments:
+
+- =runner=: The test runner function to use. This should be defined by your test framework; as an example, in Mocha, you'd pass =it=.
+
+- =cases=: An array of test cases to execute. Each test case is itself an array, whose first member is the description of the test case, and whose remaining members (if any) are passed in defined order as arguments to the test function.
+
+- =testFunction=: A function which embodies the actual test to perform against each of the cases you've defined. It'll be =.apply()='d over the values given in the test case array.
+
+Each argument's type is checked for validity, and an error thrown if the check fails. Beyond that, you're on your own -- but, really, what else is there?
+
+** Really long version (worked example)
+
+Before, with lots of repetitive boilerplate:
+
+#+BEGIN_EXAMPLE
+  var expect = require('chai').expect;
+
+  describe('example', function() {
+    it('should do a thing', function() {
+      expect(1).to.equal(1);
+      expect(2).to.equal(2);
+      expect(1).to.equal(1);
+    });
+    
+    it('should do another thing', function() {
+      expect(2).to.equal(2);
+      expect(4).to.equal(4);
+      expect(4).to.equal(4);
+    });
+    
+    it('should do yet another thing', function() {
+      expect(3).to.equal(3);
+      expect(6).to.equal(6);
+      expect(9).to.equal(9);
+    });
+    
+    it('should do a fourth and final thing', function() {
+      expect(4).to.equal(4);
+      expect(8).to.equal(8);
+      expect(16).to.equal(16);
+    });
+  });
+#+END_EXAMPLE
+
+After, without:
+
+#+BEGIN_EXAMPLE
+  var expect = require('chai').expect;
+  var cases = require('lazytests');
+
+  describe('example', function() {
+             cases(it,                    // test runner provided by framework
+               [['should do a thing', 1], // test case specifications
+                ['should do another thing', 2],
+                ['should do yet another thing', 3],
+                ['should do a fourth and final thing', 4]],
+               function(n) {              // test function
+                 expect(n).to.equal(n);
+                 expect(2*n).to.equal(2*n);
+                 expect(Math.pow(n, 2)).to.equal(Math.pow(n, 2));
+               });
+  });
+#+END_EXAMPLE
+
+* Plans for the future
+
+Eventually, I'll want to use this for something whose test cases are complicated enough that it's worth being able to pass them as object literals, and do the argument mapping by name instead of positionally. When I do, I'll implement that.

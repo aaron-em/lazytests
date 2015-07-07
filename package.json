@@ -1,0 +1,12 @@
+{
+  "name": "lazytests",
+  "version": "1.0.0",
+  "description": "Lazy tests for lazy engineers. Define an array of test cases and a function to execute each, and let lazytests do the rest.",
+  "main": "lazytests.js",
+  "author": "Aaron Miller <me@aaron-miller.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "~3.0.0",
+    "mocha": "~2.2.5"
+  }
+}
