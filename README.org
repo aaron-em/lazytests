@@ -1,6 +1,6 @@
 #+TITLE: Lazytests: lazy tests for lazy engineers
 
-[[https://api.travis-ci.org/aaron-em/lazytests.png]]
+[[https://travis-ci.org/aaron-em/lazytests][https://api.travis-ci.org/aaron-em/lazytests.png]]
 
 * Why?
 
