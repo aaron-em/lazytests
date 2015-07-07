@@ -12,6 +12,12 @@ Because it's more convenient than writing a lot of repetitive test boilerplate.
 
 ** Short version
 
+In your shell:
+
+: $ npm install --save-dev lazytests
+
+In your code:
+
 : cases = require('lazytests');
 : cases(it, testCases, testFunction);
 
