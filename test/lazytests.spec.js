@@ -25,6 +25,9 @@ describe('lazytests', function() {
     expect(caller(fn))
       .to.throw('arg 2 must be an array');
 
+    expect(caller(fn, ['lol']))
+      .to.throw('arg 2 must contain only arrays');
+
     expect(caller(fn, []))
       .to.throw('arg 3 must be a function');
 

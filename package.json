@@ -1,6 +1,6 @@
 {
   "name": "lazytests",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lazy tests for lazy engineers. Define an array of test cases and a function to execute each, and let lazytests do the rest.",
   "main": "lazytests.js",
   "author": "Aaron Miller <me@aaron-miller.me>",

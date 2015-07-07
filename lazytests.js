@@ -7,6 +7,10 @@ module.exports = function(runner, cases, test) {
     throw new Error('lazytests arg 2 must be an array');
   }
 
+  if (! cases.every(function(c) { return Array.isArray(c); })) {
+    throw new Error('lazytests arg 2 must contain only arrays');
+  };
+
   if (typeof test !== 'function') {
     throw new Error('lazytests arg 3 must be a function');
   }
