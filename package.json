@@ -1,10 +1,14 @@
 {
   "name": "lazytests",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lazy tests for lazy engineers. Define an array of test cases and a function to execute each, and let lazytests do the rest.",
   "main": "lazytests.js",
   "author": "Aaron Miller <me@aaron-miller.me>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aaron-em/lazytests"
+  },
   "devDependencies": {
     "chai": "~3.0.0",
     "mocha": "~2.2.5"
